@@ -1,0 +1,56 @@
+﻿@model Basic_MVC.Model.CustomerOrderViewModel
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri ve Siparişler</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Müşteri Bilgileri</h1>
+    <p><strong>İsim:</strong> @Model.Customer.FirstName @Model.Customer.LastName</p>
+    <p><strong>Email:</strong> @Model.Customer.Email</p>
+
+    <h2>Siparişler</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sipariş ID</th>
+                <th>Ürün Adı</th>
+                <th>Fiyat</th>
+                <th>Miktar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.ProductName</td>
+                    <td>@order.Price.ToString("C")</td>
+                    <td>@order.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
